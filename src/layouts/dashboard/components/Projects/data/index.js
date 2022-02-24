@@ -15,23 +15,18 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+import { useState } from "react";
+
 // @mui material components
 import Tooltip from "@mui/material/Tooltip";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
-import MDProgress from "components/MDProgress";
+import Switch from "@mui/material/Switch";
 
 // Images
-import logoXD from "assets/images/small-logos/logo-xd.svg";
-import logoAtlassian from "assets/images/small-logos/logo-atlassian.svg";
-import logoSlack from "assets/images/small-logos/logo-slack.svg";
-import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
-import logoJira from "assets/images/small-logos/logo-jira.svg";
-import logoInvesion from "assets/images/small-logos/logo-invision.svg";
-import team1 from "assets/images/team-1.jpg";
+import logoPlant from "assets/images/small-logos/logo-plant.svg";
 import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
 import team4 from "assets/images/team-4.jpg";
 
 export default function data() {
@@ -68,41 +63,21 @@ export default function data() {
       </MDTypography>
     </MDBox>
   );
-
+  const [lights1, setLights1] = useState(true);
+  const [lights2, setLights2] = useState(true);
+  const [lights3, setLights3] = useState(true);
   return {
     columns: [
       { Header: "companies", accessor: "companies", width: "45%", align: "left" },
       { Header: "members", accessor: "members", width: "10%", align: "left" },
-      { Header: "budget", accessor: "budget", align: "center" },
-      { Header: "completion", accessor: "completion", align: "center" },
+      { Header: "temperature", accessor: "temperature", align: "center" },
+      { Header: "lights", accessor: "lights", align: "center" },
+      { Header: "hydration", accessor: "hydration", align: "center" },
     ],
 
     rows: [
       {
-        companies: <Company image={logoXD} name="Material UI XD Version" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team2, "Romina Hadid"],
-              [team3, "Alexander Smith"],
-              [team4, "Jessica Doe"],
-            ])}
-          </MDBox>
-        ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            $14,000
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={60} color="info" variant="gradient" label={false} />
-          </MDBox>
-        ),
-      },
-      {
-        companies: <Company image={logoAtlassian} name="Add Progress Track" />,
+        companies: <Company image={logoPlant} name="Plant 1" />,
         members: (
           <MDBox display="flex" py={1}>
             {avatars([
@@ -111,98 +86,72 @@ export default function data() {
             ])}
           </MDBox>
         ),
-        budget: (
+        temperature: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $3,000
+            24.5
           </MDTypography>
         ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={10} color="info" variant="gradient" label={false} />
+        lights: (
+          <MDBox width="8rem" textAlign="center">
+            <Switch checked={lights1} onChange={() => setLights1(!lights1)} color="success" />
           </MDBox>
+        ),
+        hydration: (
+          <MDTypography variant="caption" color="text" fontWeight="medium">
+            100%
+          </MDTypography>
         ),
       },
       {
-        companies: <Company image={logoSlack} name="Fix Platform Errors" />,
+        companies: <Company image={logoPlant} name="Plant 2" />,
         members: (
           <MDBox display="flex" py={1}>
             {avatars([
-              [team1, "Ryan Tompson"],
-              [team3, "Alexander Smith"],
-            ])}
-          </MDBox>
-        ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            Not set
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={100} color="success" variant="gradient" label={false} />
-          </MDBox>
-        ),
-      },
-      {
-        companies: <Company image={logoSpotify} name="Launch our Mobile App" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team4, "Jessica Doe"],
-              [team3, "Alexander Smith"],
               [team2, "Romina Hadid"],
-              [team1, "Ryan Tompson"],
-            ])}
-          </MDBox>
-        ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            $20,500
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={100} color="success" variant="gradient" label={false} />
-          </MDBox>
-        ),
-      },
-      {
-        companies: <Company image={logoJira} name="Add the New Pricing Page" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([[team4, "Jessica Doe"]])}
-          </MDBox>
-        ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            $500
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={25} color="info" variant="gradient" label={false} />
-          </MDBox>
-        ),
-      },
-      {
-        companies: <Company image={logoInvesion} name="Redesign New Online Shop" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
               [team4, "Jessica Doe"],
             ])}
           </MDBox>
         ),
-        budget: (
+        temperature: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $2,000
+            24.5
           </MDTypography>
         ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={40} color="info" variant="gradient" label={false} />
+        lights: (
+          <MDBox width="8rem" textAlign="center">
+            <Switch checked={lights2} onChange={() => setLights2(!lights2)} color="success" />
           </MDBox>
+        ),
+        hydration: (
+          <MDTypography variant="caption" color="text" fontWeight="medium">
+            100%
+          </MDTypography>
+        ),
+      },
+      {
+        companies: <Company image={logoPlant} name="Plant 3" />,
+        members: (
+          <MDBox display="flex" py={1}>
+            {avatars([
+              [team2, "Romina Hadid"],
+              [team4, "Jessica Doe"],
+            ])}
+          </MDBox>
+        ),
+        temperature: (
+          <MDTypography variant="caption" color="text" fontWeight="medium">
+            24.5
+          </MDTypography>
+        ),
+        lights: (
+          <MDBox width="8rem" textAlign="center">
+            <Switch checked={lights3} onChange={() => setLights3(!lights3)} color="success" />
+          </MDBox>
+        ),
+        hydration: (
+          <MDTypography variant="caption" color="text" fontWeight="medium">
+            100%
+          </MDTypography>
         ),
       },
     ],
